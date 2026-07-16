@@ -5,6 +5,7 @@ Public AI agent skills by [DannyMac180](https://github.com/DannyMac180).
 ## Available Skills
 
 - [`codex-dynamic-workflows`](./codex-dynamic-workflows/) - Plan and run supervised AI-agent dynamic workflows with goal mode, subagents or simulated work packets, approval gates, integration, verification, and reusable workflow artifacts.
+- [`explain-this`](./explain-this/) - Explain any digital artifact (papers, articles, code) shaped by a persistent learner profile, with comprehension quizzes and spaced-repetition review. On first use it interviews you (~10 min) and creates `~/.explain-this/`.
 
 ## Install
 
