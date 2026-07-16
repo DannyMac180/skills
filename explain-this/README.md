@@ -48,4 +48,11 @@ agent host you use.
 ## Requirements
 
 Any agent that supports skills. The two helper scripts run on
-[Bun](https://bun.sh) or Node 22+ with zero dependencies.
+[Bun](https://bun.sh) or Node with native TypeScript type-stripping
+(v23+, or v22.6+ with `--experimental-strip-types`), zero dependencies.
+
+## Privacy
+
+`~/.explain-this/` contains a candid profile of how you learn and a record of
+what you've studied. It lives outside any repository by design — don't commit
+it, and treat it like the personal document it is.

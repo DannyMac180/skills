@@ -102,6 +102,10 @@ When invoked for a NEW explanation while cards are due, mention it once
   `references/quiz.md` two-pass procedure.
 - **Grade the user's free-text answers yourself** (hit/partial/miss). Never
   ask them to self-grade; self-grading is generous and corrupts the evidence.
+- **You wrote the explanation AND grade the quiz — watch for grading
+  inflation.** Grade against the artifact and the stored answer/rubric, not
+  against your own explanation's wording. When unsure between hit and
+  partial, choose partial.
 - **State is sacred.** Never reset, rewrite, or prune `~/.explain-this/`
   except through the documented flows. Losing a learner's history is the worst
   failure this tool can have.

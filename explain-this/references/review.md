@@ -27,8 +27,9 @@ gated updates to LEARNER.md). Keep them distinct.
 ```
 
 Signals are dumb at write time — no interpretation. Scheduling is straight
-SM-2 (see `scripts/sm2.ts`): hit → interval × ease; miss → interval resets,
-ease drops. Cards retire when the interval exceeds ~120 days (known — stop
+SM-2 (see `scripts/sm2.ts`): hit (q=5) → interval × ease; partial (q=3) →
+advances but drops ease; miss (q=2) → interval resets, ease drops, lapse
+recorded. Cards retire when the interval exceeds ~120 days (known — stop
 asking); `suspended` when the user says "don't quiz me on this." Cap ~5 cards
 per artifact so the deck grows linearly with reading.
 

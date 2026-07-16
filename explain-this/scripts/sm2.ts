@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// SM-2 spaced-repetition algorithm (P.A. Wozniak, SuperMemo) — zero-dep implementation.
 // sm2.ts — SM-2 spaced-repetition scheduling for the explain-this skill.
 // Zero dependencies. Runs under both `bun sm2.ts` and `node sm2.ts` (Node 22+
 // native type-stripping). Erasable TypeScript syntax only.
