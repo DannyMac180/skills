@@ -75,3 +75,20 @@ Expected behavior:
 - Simulate subagents with isolated packet notes under `results/`.
 - Keep security and reliability findings separate until integration.
 - Produce a synthesized final report.
+
+## Public Contribution Sprint
+
+Prompt:
+
+```text
+Use $codex-dynamic-workflows to find one high-confidence open source PR opportunity, prepare the local change, and stop before any public GitHub action.
+```
+
+Expected behavior:
+
+- Create a workflow artifact before searching or editing.
+- Split the work into discovery, mergeability triage, contribution angle, local draft, and verification packets.
+- Prefer one small maintainer-useful PR over many broad or promotional suggestions.
+- Treat commits, pushes, comments, follows, and pull request creation as approval-gated external actions.
+- If the contribution touches healthcare, finance, security, or other regulated domains, frame it as documentation, research, or workflow support rather than professional advice.
+- Verify the local diff and produce a concise handoff with the exact next approval needed.
