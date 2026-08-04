@@ -15,13 +15,13 @@ If your AI agent supports skills, you can point it at the GitHub URL for a skill
 Install the AI agent skill at https://github.com/DannyMac180/skills/tree/main/codex-dynamic-workflows
 ```
 
-You can also clone this repo and copy a skill folder into your agent's skills directory. Adjust the destination path for your agent; this example uses Codex's default skills folder:
+You can also clone this repo and copy a skill folder into your agent's skills directory. Adjust the destination path for your agent; this example uses Codex's user-scope skills folder (`~/.agents/skills`):
 
 ```bash
 git clone https://github.com/DannyMac180/skills.git
 cd skills
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R codex-dynamic-workflows "${CODEX_HOME:-$HOME/.codex}/skills/"
+mkdir -p "$HOME/.agents/skills"
+cp -R codex-dynamic-workflows "$HOME/.agents/skills/"
 ```
 
 Then start a new agent session and invoke it with:
