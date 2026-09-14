@@ -1,0 +1,4 @@
+interface:
+  display_name: "Relay"
+  short_description: "Open a new Codex task and get one message back"
+  default_prompt: "Use $codex-relay to open a new task for this work and report back here when it is done."
