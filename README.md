@@ -2,6 +2,10 @@
 
 Public AI agent skills by [DannyMac180](https://github.com/DannyMac180).
 
+## Go deeper
+
+I write [**Attention Heads**](https://attentionheads.substack.com/?utm_source=github&utm_medium=readme&utm_campaign=skills) — deep, evidence-backed writing on AI, cognition, and agentic engineering. The **Agentic Engineering Field Notes** series is where I publish practical advice on the craft of using AI. [Subscribe](https://attentionheads.substack.com/subscribe?utm_source=github&utm_medium=readme&utm_campaign=skills) to get new posts to your inbox.
+
 ## Available Skills
 
 - [`claude-mod-builder`](./claude-mod-builder/) - Build, test, and ship a Claude Mod: a Claude Code plugin whose behaviour lives in a function-hooks module, hooking the engine's events as TypeScript functions `($, e, next)`. Covers event and tier choice, drawing above the prompt, the plugin test kit, and the early-access gotchas.
