@@ -4,6 +4,7 @@ Public AI agent skills by [DannyMac180](https://github.com/DannyMac180).
 
 ## Available Skills
 
+- [`claude-mod-builder`](./claude-mod-builder/) - Build, test, and ship a Claude Mod: a Claude Code plugin whose behaviour lives in a function-hooks module, hooking the engine's events as TypeScript functions `($, e, next)`. Covers event and tier choice, drawing above the prompt, the plugin test kit, and the early-access gotchas.
 - [`codex-dynamic-workflows`](./codex-dynamic-workflows/) - Plan and run supervised AI-agent dynamic workflows with goal mode, subagents or simulated work packets, approval gates, integration, verification, and reusable workflow artifacts.
 - [`codex-relay`](./codex-relay/) - Relay: open one new native Codex task from your current task with a compact handoff, end your turn, and receive a single completion or blocker message back. Honors your chosen model and effort, or your default.
 - [`explain-this`](./explain-this/) - Explain any digital artifact (papers, articles, code) shaped by a persistent learner profile, with comprehension quizzes and spaced-repetition review. On first use it interviews you (~10 min) and creates `~/.explain-this/`.
