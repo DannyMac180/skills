@@ -1,0 +1,9 @@
+{
+  "name": "effort-modes",
+  "version": "0.1.0",
+  "description": "Offers three modes through mode-registry: ui (low effort), api (medium) and review (max, for code review and security). Sets the main thread's effort per mode; makes no model calls of its own.",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "dependencies": ["mode-registry"],
+  "keywords": ["function-hooks", "modes", "effort"]
+}

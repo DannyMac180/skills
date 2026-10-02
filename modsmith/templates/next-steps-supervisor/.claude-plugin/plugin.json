@@ -1,0 +1,8 @@
+{
+  "name": "next-steps-supervisor",
+  "version": "0.1.0",
+  "description": "After a turn that changed things, a forked check asks whether the goal was met, where it cut corners and what to do next, and draws the verdict above the prompt",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

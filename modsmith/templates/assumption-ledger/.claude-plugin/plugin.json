@@ -1,0 +1,8 @@
+{
+  "name": "assumption-ledger",
+  "version": "0.1.0",
+  "description": "Gives Claude a register_assumption tool and shows the turn's assumptions, decisions and considered-but-not-done items above the prompt",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

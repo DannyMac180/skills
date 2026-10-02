@@ -1,0 +1,8 @@
+{
+  "name": "my-mod",
+  "version": "0.1.0",
+  "description": "A starting point: registers /my-command at session start and answers it. Makes no model calls. Replace this line with what your mod does and what it costs per turn.",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "keywords": ["function-hooks", "claude-mod"]
+}

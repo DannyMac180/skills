@@ -1,0 +1,9 @@
+{
+  "name": "mode-registry",
+  "version": "0.1.0",
+  "description": "A shared /mode switch that any plugin can offer a mode to. Shows the active mode in the prompt footer. Makes no model calls.",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "keywords": ["function-hooks", "modes", "composition"],
+  "types": "./types/index.d.ts"
+}

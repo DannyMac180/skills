@@ -1,0 +1,4 @@
+{
+  "description": "Registers /mode, keeps the mode catalog and the active mode in $.state, labels the prompt footer, and draws a picker above the prompt on request.",
+  "modules": ["./register.tsx"]
+}

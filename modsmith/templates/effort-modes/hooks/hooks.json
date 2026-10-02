@@ -1,0 +1,4 @@
+{
+  "description": "Adds three modes to mode-registry's catalog and rewrites the main thread's effort on turn.step while one of them is active.",
+  "modules": ["./register.ts"]
+}

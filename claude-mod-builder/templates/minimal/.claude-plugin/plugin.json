@@ -1,8 +1,0 @@
-{
-  "name": "my-mod",
-  "version": "0.1.0",
-  "description": "One sentence on what this mod does and what it hooks. Needs function hooks (early access) and an interactive terminal.",
-  "author": { "name": "Your Name" },
-  "license": "MIT",
-  "keywords": ["function-hooks"]
-}
