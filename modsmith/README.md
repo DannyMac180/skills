@@ -51,15 +51,28 @@ switch other mods can join, and artifacts as shared project state.
 
 ## Use it
 
-Install the skill by copying this folder into your Claude Code skills folder:
+In Claude Code, add the marketplace once:
 
-```bash
-git clone https://github.com/DannyMac180/skills.git
-mkdir -p ~/.claude/skills
-cp -R skills/modsmith ~/.claude/skills/
+```text
+/plugin marketplace add DannyMac180/skills
 ```
 
-Then, in Claude Code, just ask:
+Then install the skill, and any mods you want. They stay installed across
+sessions, and you can browse, enable or remove them from the `/plugin` screen.
+
+```text
+/plugin install modsmith@modsmith
+/plugin install quiz-after@modsmith
+/plugin install next-steps-supervisor@modsmith
+/plugin install assumption-ledger@modsmith
+/plugin install effort-modes@modsmith
+/plugin install artifact-dashboard@modsmith
+```
+
+`effort-modes` brings `mode-registry` with it. Start a new Claude Code session
+after installing so the mods load.
+
+With the skill installed, just ask:
 
 ```text
 Make me a mod that quizzes me after each task.
@@ -67,11 +80,9 @@ Vet this mod before I install it: <path or repo>
 What does this mod cost per turn?
 ```
 
-To try a ready-made mod directly:
-
-```bash
-claude --plugin-dir ~/.claude/skills/modsmith/templates/quiz-after
-```
+Prefer a plain skill folder? Copy `modsmith/` into `~/.claude/skills/`, and
+try any mod for one session with
+`claude --plugin-dir ~/.claude/skills/modsmith/templates/quiz-after`.
 
 ## What's inside
 

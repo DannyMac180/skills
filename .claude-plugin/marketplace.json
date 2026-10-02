@@ -1,0 +1,62 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "modsmith",
+  "owner": {
+    "name": "Dan McAteer",
+    "url": "https://github.com/DannyMac180"
+  },
+  "metadata": {
+    "description": "ModSmith: a Claude Code skill for building, pricing and vetting mods, plus ready-made mods you can install one by one."
+  },
+  "plugins": [
+    {
+      "name": "modsmith",
+      "source": "./modsmith",
+      "strict": false,
+      "skills": ["./"],
+      "description": "The ModSmith skill: ready-made mod patterns, per-turn token and prompt-cache review, vetting someone else's mod before installing, and rules for mods that work together.",
+      "version": "0.2.0",
+      "author": { "name": "Dan McAteer" },
+      "license": "MIT",
+      "homepage": "https://github.com/DannyMac180/skills/tree/main/modsmith",
+      "keywords": ["mods", "function-hooks", "prompt-cache", "skills"],
+      "category": "development"
+    },
+    {
+      "name": "quiz-after",
+      "source": "./modsmith/templates/quiz-after",
+      "description": "After Claude finishes a task that changed something, shows 2-3 questions about what was built above the prompt. One cached fork on those turns only; /quiz turns it off.",
+      "category": "learning"
+    },
+    {
+      "name": "next-steps-supervisor",
+      "source": "./modsmith/templates/next-steps-supervisor",
+      "description": "After a turn that did real work, a cached side check asks whether the goal was met, where corners were cut and what needs your approval, with next steps as buttons. /supervisor turns it off.",
+      "category": "productivity"
+    },
+    {
+      "name": "assumption-ledger",
+      "source": "./modsmith/templates/assumption-ledger",
+      "description": "Gives Claude a register_assumption tool and shows the turn's assumptions, decisions and considered-but-not-done items above the prompt. No model calls of its own.",
+      "category": "productivity"
+    },
+    {
+      "name": "mode-registry",
+      "source": "./modsmith/templates/mode-registry",
+      "description": "One /mode switch any mod can add a mode to; the active mode shows in the prompt footer. No model calls.",
+      "category": "productivity"
+    },
+    {
+      "name": "effort-modes",
+      "source": "./modsmith/templates/effort-modes",
+      "description": "Three modes on the /mode switch: ui (low effort), api (medium), review (max). Needs mode-registry. Each switch rebuilds the prompt cache once.",
+      "category": "productivity"
+    },
+    {
+      "name": "artifact-dashboard",
+      "source": "./modsmith/templates/artifact-dashboard",
+      "description": "A one-line summary of a shared Kanban artifact above the prompt, so several Claude sessions work from the same board. No model tokens.",
+      "category": "productivity"
+    }
+  ]
+}

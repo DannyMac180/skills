@@ -15,7 +15,9 @@ I write [**Attention Heads**](https://attentionheads.substack.com/?utm_source=gi
 
 ## Install
 
-If your AI agent supports skills, you can point it at the GitHub URL for a skill and ask it to install that skill:
+**Claude Code plugin marketplace (ModSmith).** Run `/plugin marketplace add DannyMac180/skills`, then `/plugin install modsmith@modsmith` for the skill and `/plugin install quiz-after@modsmith` (or any other ModSmith mod) for ready-made mods.
+
+**Any agent.** If your AI agent supports skills, you can point it at the GitHub URL for a skill and ask it to install that skill:
 
 ```text
 Install the AI agent skill at https://github.com/DannyMac180/skills/tree/main/codex-dynamic-workflows
