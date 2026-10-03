@@ -13,13 +13,43 @@
       "name": "modsmith",
       "source": "./modsmith",
       "strict": false,
-      "skills": ["./"],
+      "skills": [
+        "./"
+      ],
       "description": "The ModSmith skill: ready-made mod patterns, per-turn token and prompt-cache review, vetting someone else's mod before installing, and rules for mods that work together.",
       "version": "0.2.0",
-      "author": { "name": "Dan McAteer" },
+      "author": {
+        "name": "Dan McAteer"
+      },
       "license": "MIT",
       "homepage": "https://github.com/DannyMac180/skills/tree/main/modsmith",
-      "keywords": ["mods", "function-hooks", "prompt-cache", "skills"],
+      "keywords": [
+        "mods",
+        "function-hooks",
+        "prompt-cache",
+        "skills"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "modsmith-all",
+      "source": "./modsmith/bundle",
+      "strict": false,
+      "description": "Installs the ModSmith skill and all six ModSmith mods in one go: quiz-after, next-steps-supervisor, assumption-ledger, mode-registry, effort-modes and artifact-dashboard. Remove any one later from /plugin.",
+      "version": "0.2.0",
+      "author": {
+        "name": "Dan McAteer"
+      },
+      "license": "MIT",
+      "dependencies": [
+        "modsmith",
+        "quiz-after",
+        "next-steps-supervisor",
+        "assumption-ledger",
+        "mode-registry",
+        "effort-modes",
+        "artifact-dashboard"
+      ],
       "category": "development"
     },
     {
