@@ -85,6 +85,20 @@ nothing is written. `cards.jsonl` itself may be missing inside an existing
 - **Quizzing every N turns, or on a cost budget.** "The task is finished" is the
   moment Thariq described. A fixed cadence would quiz half-done work.
 
+## Confirmed in a live session
+
+First run on 2026-10-03, in the Claude Code desktop app (2.1.287), loaded
+beside a third mod (token-weather) and next-steps-supervisor:
+
+- The fork started from `$.clock.after` after the turn ended ran normally; it
+  was not cut as `aborted`.
+- The fork followed the JSON instruction and the band drew above the prompt,
+  alongside the other two bands without hiding either.
+- Nothing from the fork appeared in the main conversation's context.
+
+Still unconfirmed live: the buttons and hotkeys, Save to deck, and the real per-check
+token cost.
+
 ## Assumptions not verified
 
 - That `$.model.fork` called from a `$.clock.after` callback, after the

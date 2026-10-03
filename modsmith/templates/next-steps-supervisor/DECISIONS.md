@@ -89,6 +89,20 @@ check and nothing draws from them.
   self-corrects: that defeats the point of keeping the main context clean,
   and it takes the decision away from the person.
 
+## Confirmed in a live session
+
+First run on 2026-10-03, in the Claude Code desktop app (2.1.287), loaded
+beside a third mod (token-weather) and quiz-after:
+
+- The fork started from `$.clock.after` after the turn ended ran normally; it
+  was not cut as `aborted`.
+- The fork followed the JSON instruction and the band drew above the prompt,
+  alongside the other two bands without hiding either.
+- Nothing from the fork appeared in the main conversation's context.
+
+Still unconfirmed live: the buttons and hotkeys, whether the fork already sees the final reply, and the real per-check
+token cost.
+
 ## Assumptions not verified in a live session
 
 - The fork's prompt and reply do not appear in the main transcript. This is

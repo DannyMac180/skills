@@ -115,8 +115,10 @@ try any mod for one session with
 Built and checked against Claude Code 2.1.286/2.1.287. Mods are an
 early-access feature and change between releases, so ModSmith always defers to
 the types your own build generates. Every template passes
-`claude plugin validate` and its own tests. None has been run in a live
-session yet; each `DECISIONS.md` lists exactly what's left to confirm.
+`claude plugin validate` and its own tests. `quiz-after` and
+`next-steps-supervisor` have run live in the desktop app, drawing side by
+side with another mod; the others haven't yet. Each `DECISIONS.md` lists
+exactly what's confirmed and what's left to check.
 
 ## License
 
