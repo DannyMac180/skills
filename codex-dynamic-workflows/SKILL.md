@@ -1,6 +1,6 @@
 ---
 name: codex-dynamic-workflows
-description: Plan and run AI-agent dynamic workflows for complex tasks that benefit from explicit orchestration, goal mode, subagents or simulated work packets, approval gates, integration, verification, and reusable workflow artifacts. Use when the user invokes this skill, asks for a swarm, subagents, parallel agents, a dynamic workflow, a large migration or audit, multi-track research plus implementation, or Claude Code-style workflow orchestration.
+description: "Design a multi-agent workflow for a complex task when the user requests dynamic orchestration."
 ---
 
 # AI Agent Dynamic Workflows
@@ -11,16 +11,7 @@ This skill works in agents that support skills. Do not claim that a local script
 
 ## Decision Rule
 
-Use dynamic orchestration when at least two are true:
-
-- The task has independent research, coding, review, migration, QA, docs, or design tracks.
-- The task is broad enough that an explicit success contract would reduce drift.
-- The task has risk: destructive edits, external writes, deploys, secrets, production data, billing, user accounts, or large repo-wide changes.
-- Verification benefits from a separate pass from implementation.
-- The workflow could become a reusable recipe for future tasks.
-- The user explicitly asks for a dynamic workflow, swarm, subagents, parallel agents, or Claude Code-style workflow.
-
-If the task is small, do it directly and mention that full workflow orchestration was unnecessary.
+Use this skill when the user requests dynamic orchestration. Task complexity, risk, or parallel tracks alone do not activate it. Within an authorized workflow, choose only delegation that contributes a concrete independent result.
 
 ## Operating Contract
 
@@ -28,11 +19,11 @@ When using this skill:
 
 1. Restate the goal and success criteria.
 2. Create or update a workflow artifact before delegating.
-3. Ask for approval before risky, expensive, external, or destructive steps.
-4. Enter goal mode when the user explicitly requests sustained execution or when the invoked task clearly requires multi-turn completion.
+3. Check authorization for consequential actions against the boundaries below; do not ask again for an action already authorized within scope.
+4. Create a goal only when explicitly requested by the user or system/developer instructions; ordinary multi-turn work does not authorize goal creation.
 5. Split work into disjoint packets with clear ownership.
 6. Spawn subagents only when the current environment allows it and the user has authorized delegated or parallel agent work.
-7. Simulate subagents with isolated packet notes when no subagent runner is available.
+7. If no subagent runner is available, perform independent passes locally and label them as parent work, not subagent results.
 8. Integrate results explicitly; do not paste raw subagent dumps as the final answer.
 9. Verify with checks matched to the task's blast radius.
 10. Save reusable artifacts only when they will help future work.
@@ -81,24 +72,15 @@ Do not over-plan obvious work. The plan should be detailed enough to guide deleg
 
 ## Approval Gates
 
-Ask one clear approval question before:
+Obtain missing authorization before consequential actions: publishing or sending to a named destination, production mutations, destructive deletion or history rewriting, credential/account/security changes, or materially costly workloads. Existing explicit authorization persists within its scope. A generic request to implement does not authorize unrelated external actions.
 
-- deleting, overwriting, mass-renaming, or force-pushing
-- running migrations or broad codemods
-- deploying, publishing, emailing, posting, or changing external systems
-- touching credentials, secrets, production data, billing, or user accounts
-- spawning many agents or long-running expensive jobs
-- making irreversible Git or repository operations
+Authorized local edits, including replacing file contents as part of the requested change, and relevant disposable-fixture checks may proceed. Prepare the concrete result before asking for any missing authorization. Continue independent preparation and repair while a consequential action awaits approval.
 
-If approval is denied or unavailable, continue only with safe read-only planning, local drafts, or non-destructive checks.
-
-Read `references/risk-gates.md` when risk is unclear.
+Use [risk-gates.md](references/risk-gates.md) when the action's authorization is unclear.
 
 ## Goal Mode
 
-If goal mode tools are available and the user has asked this skill to run the workflow, call goal mode with the full objective. Keep the objective intact; do not shrink it to the next step.
-
-Do not enter goal mode for a small one-shot task, a purely advisory discussion, or when the user asks only for a plan.
+Create a goal only when explicitly requested by the user or system/developer instructions and supported by the current tool contract. A request to run a workflow, work for several turns, or continue implementation is not by itself a request to create a tracked goal. Keep any authorized goal's full objective intact.
 
 ## Work Packets
 
@@ -142,7 +124,7 @@ When a subagent runner is available:
 
 When no subagent runner is available:
 
-- Simulate the swarm with isolated packet passes.
+- Perform isolated packet passes locally and label them as parent work.
 - Read only packet-relevant files during each pass.
 - Write packet notes under `results/`.
 - Integrate only after packet outputs are separate.
