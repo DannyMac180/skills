@@ -34,7 +34,7 @@ it too.
 
 None of this enters the main conversation: by `$.model.fork`'s documented
 contract the fork's question and answer stay outside the transcript, so the
-main context does not grow. (Not yet confirmed in a live session; see
+main context does not grow. (In the first live run nothing from the fork reached the main conversation; see
 DECISIONS.md.)
 
 ## Commands
