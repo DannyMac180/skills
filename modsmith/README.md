@@ -57,7 +57,20 @@ In Claude Code, add the marketplace once:
 /plugin marketplace add DannyMac180/skills
 ```
 
-Then install the skill, and any mods you want. They stay installed across
+Then install everything at once:
+
+```text
+/plugin install modsmith-all@modsmith
+```
+
+That brings the skill and all six mods. Two of them (`quiz-after` and
+`next-steps-supervisor`) each spend one cached side check after turns that
+changed something, so expect a little extra token use. To drop one mod later,
+uninstall `modsmith-all@modsmith` first (the mods stay installed), then
+disable or uninstall that mod from `/plugin`. While the bundle is installed,
+Claude Code won't let you turn off a single mod it depends on.
+
+Or install the skill, and only the mods you want. They stay installed across
 sessions, and you can browse, enable or remove them from the `/plugin` screen.
 
 ```text

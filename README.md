@@ -15,7 +15,7 @@ I write [**Attention Heads**](https://attentionheads.substack.com/?utm_source=gi
 
 ## Install
 
-**Claude Code plugin marketplace (ModSmith).** Run `/plugin marketplace add DannyMac180/skills`, then `/plugin install modsmith@modsmith` for the skill and `/plugin install quiz-after@modsmith` (or any other ModSmith mod) for ready-made mods.
+**Claude Code plugin marketplace (ModSmith).** Run `/plugin marketplace add DannyMac180/skills`, then `/plugin install modsmith-all@modsmith` for the skill plus all six ready-made mods, or `/plugin install modsmith@modsmith` for the skill alone and `/plugin install quiz-after@modsmith` (or any other ModSmith mod) one by one.
 
 **Any agent.** If your AI agent supports skills, you can point it at the GitHub URL for a skill and ask it to install that skill:
 
