@@ -1,0 +1,8 @@
+{
+  "name": "quiz-after",
+  "version": "0.1.0",
+  "description": "After a turn that finished a task, a forked check writes 2-3 questions about what was built and draws them above the prompt",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

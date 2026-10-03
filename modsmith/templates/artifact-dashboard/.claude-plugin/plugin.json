@@ -1,0 +1,8 @@
+{
+  "name": "artifact-dashboard",
+  "version": "0.1.0",
+  "description": "A one-line summary of the project's shared Kanban artifact above the prompt, read through Claude's own ArtifactData tool",
+  "author": { "name": "Danny McAteer" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}

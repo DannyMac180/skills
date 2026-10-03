@@ -1,0 +1,4 @@
+{
+  "description": "Mirror a shared Kanban artifact's cards and draw a one-line summary above the prompt",
+  "modules": ["./register.tsx"]
+}

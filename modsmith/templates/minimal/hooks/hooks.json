@@ -1,0 +1,4 @@
+{
+  "description": "Registers /my-command at session start and answers it.",
+  "modules": ["./register.ts"]
+}
