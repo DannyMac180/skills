@@ -203,6 +203,18 @@ export const register: Register = on => {
             · {quiz.title} · fork: {short(cached)} cached, {short(input)} new, {short(output)} out
           </Text>
         </Text>
+        <Box>
+          {quiz.isSaved ? (
+            <Text dimColor>Saved to deck </Text>
+          ) : (
+            <Button key="save" hotkey="s" label="Save to deck" onPress={() => void saveToDeck($)} />
+          )}
+          <Text> </Text>
+          <Button key="dismiss" hotkey="x" role="dismiss" label="Dismiss" onPress={dismiss} />
+        </Box>
+        <Text dimColor wrap="truncate-end">
+          Click the band or press ctrl+x tab, then 1-3 to reveal, s to save, x to dismiss
+        </Text>
         {quiz.questions.map((q, i) => (
           <Box flexDirection="column">
             <Text wrap="wrap">
@@ -225,15 +237,6 @@ export const register: Register = on => {
             )}
           </Box>
         ))}
-        <Box>
-          {quiz.isSaved ? (
-            <Text dimColor>Saved to deck </Text>
-          ) : (
-            <Button key="save" hotkey="s" label="Save to deck" onPress={() => void saveToDeck($)} />
-          )}
-          <Text> </Text>
-          <Button key="dismiss" hotkey="x" role="dismiss" label="Dismiss" onPress={dismiss} />
-        </Box>
         {below}
       </Box>
     )

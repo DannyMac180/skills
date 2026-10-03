@@ -40,10 +40,15 @@ it with no `$.ui.invalidate`.
 `register` in a fresh environment and drops its timers. Keep what the
 drawing needs in `$.state`, and what must outlive the session in `$.store`.
 
-**Hotkeys on a band are live from an empty prompt.**
+**Only digits reach a band from the prompt, and letters never do.**
 A bare digit typed into an empty prompt presses a band Button with that
-hotkey. A digit hotkey that starts a paid turn will fire by accident.
-*Fix:* letters for anything costly, or no hotkey.
+hotkey, and only one wholly inside the band's visible window. Letter hotkeys
+(`s`, `x`) work only after the band is focused (a click, or ctrl+x tab); from
+the prompt they type into it. A prompt showing a suggestion may not count as
+empty. Seen live: `s` typed "s" into the prompt, and Save sat scrolled out of
+view under a tall quiz.
+*Fix:* put the buttons that matter at the top of a tall band, tell people how
+to focus it, and use letters (never digits) for anything costly.
 
 **The band is capped at half the terminal's rows.** A taller tree scrolls
 (`e.props.maxRows`, `scroll.bodyRows`). Size width to `e.props.bodyColumns`,
