@@ -218,19 +218,18 @@ export const register: Register = on => {
 
     const { cached, input, output } = verdict.cost
     const color = COLOR[verdict.solved]
+    // One button per row: two long step labels and Dismiss on one row ran off the
+    // right edge in a normal-width window, pushing Dismiss out of view.
     const buttons = (
-      <Box>
+      <Box flexDirection="column">
         {verdict.next.map((step, i) => (
-          <Box key={`supervisor-step-${i}`}>
-            <Button
-              key={`supervisor-next-${i}`}
-              hotkey={NEXT_HOTKEYS[i]}
-              label={step.length > 60 ? `${step.slice(0, 59)}…` : step}
-              variant={i === 0 ? 'primary' : undefined}
-              onPress={send($, step)}
-            />
-            <Text> </Text>
-          </Box>
+          <Button
+            key={`supervisor-next-${i}`}
+            hotkey={NEXT_HOTKEYS[i]}
+            label={step.length > 60 ? `${step.slice(0, 59)}…` : step}
+            variant={i === 0 ? 'primary' : undefined}
+            onPress={send($, step)}
+          />
         ))}
         <Button key="supervisor-dismiss" role="dismiss" label="Dismiss" dimColor onPress={dismiss($)} />
       </Box>
