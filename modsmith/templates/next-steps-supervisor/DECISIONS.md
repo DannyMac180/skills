@@ -59,6 +59,11 @@ deciding anything, and placed under this mod's tree in a column. When there
 is nothing to show, or a survey holds the band, the hook returns `below`
 unchanged.
 
+**Next steps stack, one per row.** A Button label is one
+line and cannot wrap. Side by side in the desktop band, the first step was
+clipped at 60 chars and the second ran off the right edge. Each step now has
+its own row, Dismiss below, and the label cap is 160 (the parser clips at 240).
+
 **Hotkeys `n` and `m`, none on Dismiss.** quiz-after uses `1`-`3`, `s`, `x`
 in the same band, and a clash means the later-drawn one wins. Button keys are
 prefixed `supervisor-` for the same reason.

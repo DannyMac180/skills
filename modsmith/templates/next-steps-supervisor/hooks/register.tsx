@@ -14,6 +14,9 @@ const MANY_TOOL_CALLS = 8
 // quiz-after takes 1-3, s and x in the same band; these stay clear of them.
 const NEXT_HOTKEYS = ['n', 'm']
 
+// Each step has a whole row now; the parser already clips a step at 240.
+const MAX_LABEL = 160
+
 const short = (n: number) => (n >= 1000 ? `${+(n / 1000).toFixed(1)}k` : `${n}`)
 
 const isOn = async ($: EngineInterface) => (await $.store.get('isOn').catch(() => true)) !== false
@@ -218,20 +221,24 @@ export const register: Register = on => {
 
     const { cached, input, output } = verdict.cost
     const color = COLOR[verdict.solved]
-    // One button per row: two long step labels and Dismiss on one row ran off the
-    // right edge in a normal-width window, pushing Dismiss out of view.
+    // One step per row: a Button label is a single line, so side by side the
+    // second step ran off the right edge and both were clipped.
     const buttons = (
       <Box flexDirection="column">
         {verdict.next.map((step, i) => (
-          <Button
-            key={`supervisor-next-${i}`}
-            hotkey={NEXT_HOTKEYS[i]}
-            label={step.length > 60 ? `${step.slice(0, 59)}…` : step}
-            variant={i === 0 ? 'primary' : undefined}
-            onPress={send($, step)}
-          />
+          <Box key={`supervisor-step-${i}`}>
+            <Button
+              key={`supervisor-next-${i}`}
+              hotkey={NEXT_HOTKEYS[i]}
+              label={step.length > MAX_LABEL ? `${step.slice(0, MAX_LABEL - 1)}…` : step}
+              variant={i === 0 ? 'primary' : undefined}
+              onPress={send($, step)}
+            />
+          </Box>
         ))}
-        <Button key="supervisor-dismiss" role="dismiss" label="Dismiss" dimColor onPress={dismiss($)} />
+        <Box>
+          <Button key="supervisor-dismiss" role="dismiss" label="Dismiss" dimColor onPress={dismiss($)} />
+        </Box>
       </Box>
     )
 
