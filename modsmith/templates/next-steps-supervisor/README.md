@@ -13,7 +13,8 @@ The answer is drawn above the prompt. A clean result takes one line:
 
 ```
 ✓ Supervisor: Solved · Add retry with backoff to the API client
-[ Run the full test suite ]  [ Dismiss ]
+[ Run the full test suite ]
+[ Dismiss ]
 ```
 
 Anything else expands:
@@ -25,7 +26,9 @@ Gaps
   · No retry on 429 responses
 Shortcuts taken
   · Tests were written but never run
-[ Run the client tests and fix failures ]  [ Handle 429 with Retry-After ]  [ Dismiss ]
+[ Run the client tests and fix failures ]
+[ Handle 429 with Retry-After ]
+[ Dismiss ]
 ```
 
 Each next-step button sends that step as your next prompt (hotkeys `n` and
