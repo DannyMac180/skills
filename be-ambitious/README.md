@@ -15,6 +15,18 @@ Before rewriting your prompt, it answers four questions for the task's field:
 
 Then it rewrites your prompt to ask for exactly that, and stops so you can review it before running.
 
+## Verification gate
+
+Question 4 is the line between a plan and a result, so it does not get certified
+unchecked. After the rewrite, the fourth answer passes through one of three exits:
+
+- **Verifiable now** — run the check (test, reproduction, dataset, calculation,
+  known answer) and attach the result. Only then is the rewrite "deeper" in fact.
+- **Not verifiable now** — label it a *hypothesis awaiting verification*.
+- **Empty** — call the result a *plan awaiting verification*, not "deeper".
+
+A stated "cannot verify now" is a pass; an invented verification is a failure.
+
 ## Examples
 
 ```text
