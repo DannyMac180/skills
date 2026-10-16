@@ -6,8 +6,10 @@ description: >
   user isn't asking for, the rawest source material they would start from, the
   specific methods and tools they would use, and what (other than the user or
   the model) would show the result is right. Then rewrite the prompt to ask for
-  exactly that. USE WHEN: /be-ambitious, "be ambitious", "make this prompt
-  deeper", "what would an expert do here", "raise the bar on this task",
+  exactly that. Finally, pass the fourth answer through a verification gate:
+  verify it now, or label it as a plan awaiting verification — never certify an
+  unchecked external check. USE WHEN: /be-ambitious, "be ambitious", "make this
+  prompt deeper", "what would an expert do here", "raise the bar on this task",
   "rewrite my prompt like a pro would ask it". NOT FOR: expanding scope,
   adding features, or general prompt polishing for tone or length.
 ---
@@ -68,5 +70,27 @@ It should ask for exactly what the four answers describe: start from the raw
 material, use the named methods, and end with the external check and its pass
 criterion. Keep it about as long as it needs to be, and in the user's voice.
 
-Stop after the rewrite. Offer in one line to run it now; don't start the task
-unless the user says so.
+## Verification gate
+
+Question 4 is the line between a plan and a result. Do not certify what you
+have not checked. After the rewrite, the fourth answer must pass one of three
+exits:
+
+- **Verifiable now.** If the external check can be run with what is at hand —
+  a test suite, a reproduction, a dataset, a calculation, a known answer —
+  run it and attach the result. Only then may you call the rewrite "deeper"
+  in fact.
+- **Not verifiable now.** If it cannot be run (no data, no access, unsafe,
+  too expensive), label it explicitly as a *hypothesis awaiting verification*.
+  Do not present it as a settled criterion.
+- **Empty.** If the fourth answer is empty, do not call the result "deeper".
+  Call it a *plan awaiting verification*.
+
+Never fabricate a check, a source, or a result to satisfy this gate. A stated
+"cannot verify now" is a pass. An invented verification is a failure.
+
+## Stop
+
+After the rewrite and the gate, stop. Offer in one line to run it now; don't
+start the task unless the user says so. If the gate found a runnable check,
+offer that check specifically as the next step.
