@@ -39,6 +39,10 @@ const pending = atom({ plugin: 'assumption-ledger', key: 'pending' } as const, [
 const shown = atom({ plugin: 'assumption-ledger', key: 'shown' } as const, [] as LedgerEntry[])
 const turn = atom({ plugin: 'assumption-ledger', key: 'turn' } as const, 0)
 const isOff = atom({ plugin: 'assumption-ledger', key: 'isOff' } as const, false)
+// Whether the tool sits behind ToolSearch. Set once at session.start and not
+// changed after: changing the tool list mid-conversation invalidates the
+// thinking blocks that follow, as well as the prompt cache.
+const isDeferred = atom({ plugin: 'assumption-ledger', key: 'isDeferred' } as const, false)
 
 const isKind = (value: unknown): value is LedgerKind =>
   value === 'assumption' || value === 'decision' || value === 'considered-not-done'
@@ -132,8 +136,9 @@ const writeLogFile = async ($: EngineInterface, path: string, entries: LedgerEnt
 const setOff = async ($: EngineInterface, value: boolean) => {
   await quiet($, 'state write', update($, isOff, () => value))
   await quiet($, 'store write', $.store.set('isOff', value))
-  // Moves the tool behind ToolSearch (off) or back into the list (on): one cache rebuild.
-  $.ui.invalidate('tool.describe')
+  // The tool list stays as this conversation started it (see isDeferred). The
+  // stored value is read at session.start, so the tool moves behind ToolSearch,
+  // or back into the list, from the next session.
 }
 
 const runCommand = async ($: EngineInterface, args: string) => {
@@ -141,7 +146,7 @@ const runCommand = async ($: EngineInterface, args: string) => {
 
   if (verb === 'off' || verb === 'on') {
     await setOff($, verb === 'off')
-    return { text: verb === 'off' ? 'Assumption ledger off: the tool is moved behind ToolSearch.' : 'Assumption ledger on.' }
+    return { text: verb === 'off' ? 'Assumption ledger off: nothing more is recorded. The tool leaves the list from the next session.' : 'Assumption ledger on.' }
   }
 
   const entries = await readLog($)
@@ -166,6 +171,7 @@ export const register: Register = on => {
   on('session.start', async ($, e, next) => {
     const stored = await quiet($, 'store read', $.store.get('isOff'))
     await quiet($, 'state write', update($, isOff, () => stored === true))
+    await quiet($, 'state write', update($, isDeferred, () => stored === true))
 
     await quiet($, 'tool register', $.tool.register({ name: 'register_assumption', description: DESCRIPTION, inputSchema: SCHEMA }))
     await quiet(
@@ -191,9 +197,7 @@ export const register: Register = on => {
 
   on('tool.describe', { tool: TOOL }, async ($, e, next) => {
     const base = await next(e)
-    const off = await read($, isOff)
-
-    return { ...base, description: DESCRIPTION, isDeferred: off }
+    return { ...base, description: DESCRIPTION, isDeferred: await read($, isDeferred) }
   })
 
   on('tool.call', { tool: TOOL }, async ($, e) => {

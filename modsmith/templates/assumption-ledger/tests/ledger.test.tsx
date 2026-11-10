@@ -80,9 +80,14 @@ test('records, draws, follows up, lists, writes, turns off', async ($, on) => {
 
   await assumptions($, 'off')
   const offDescribed = await $.tool.describe({ tool: TOOL, description: 'x', provider: { plugin: 'assumption-ledger', tier: 'user' } as never })
-  expect(offDescribed.isDeferred).toBe(true)
+  // Off stops recording at once but leaves the tool list alone until the next session.
+  expect(offDescribed.isDeferred).toBe(false)
   const offCall = await $.tool.call({ tool: TOOL, kind: 'decision', text: 'Ignored' })
   expect(offCall.text ?? JSON.stringify(offCall.result)).toContain('off')
+
+  await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
+  const nextSession = await $.tool.describe({ tool: TOOL, description: 'x', provider: { plugin: 'assumption-ledger', tier: 'user' } as never })
+  expect(nextSession.isDeferred).toBe(true)
 
   expect(logs).toEqual([])
 })
