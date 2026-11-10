@@ -12,6 +12,7 @@ I write [**Attention Heads**](https://attentionheads.substack.com/?utm_source=gi
 - [`codex-dynamic-workflows`](./codex-dynamic-workflows/) - Plan and run supervised AI-agent dynamic workflows with goal mode, subagents or simulated work packets, approval gates, integration, verification, and reusable workflow artifacts.
 - [`codex-relay`](./codex-relay/) - Relay: open one new native Codex task from your current task with a compact handoff, end your turn, and receive a single completion or blocker message back. Honors your chosen model and effort, or your default.
 - [`be-ambitious`](./be-ambitious/) - Ask for a deeper version of a task, not a bigger one: what a top professional would add, the rawest source material, the specific methods and tools, and an external check that the result is right. Then it rewrites your prompt to ask for exactly that.
+- [`fable-5-2-prompt-audit`](./fable-5-2-prompt-audit/) - Audit a project's prompts and instructions for lines written for earlier Claude models that Anthropic says to reconsider on Claude Fable 5.2. Reports each finding with file and line, the guidance behind it, and a proposed change; edits nothing without approval.
 - [`explain-this`](./explain-this/) - Explain any digital artifact (papers, articles, code) shaped by a persistent learner profile, with comprehension quizzes and spaced-repetition review. On first use it interviews you (~10 min) and creates `~/.explain-this/`.
 
 ## Install
