@@ -14,6 +14,8 @@ declare module 'claude-code' {
       shown: LedgerEntry[]
       turn: number
       isOff: boolean
+      /** Whether the tool is behind ToolSearch; set once at session.start. */
+      isDeferred: boolean
     }
   }
 }

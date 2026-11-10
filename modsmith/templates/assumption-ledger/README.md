@@ -29,8 +29,8 @@ it too.
 | --- | --- |
 | `/assumptions` | Prints every entry from this session, grouped by kind, with the turn each came from. |
 | `/assumptions write [path]` | Appends the session's entries to `DECISIONS-log.md` (or `path`) in the working directory. Nothing is written to disk unless you run this. |
-| `/assumptions off` | Stops recording and moves the tool behind ToolSearch, so the model stops seeing it. Remembered across sessions. |
-| `/assumptions on` | Turns it back on. |
+| `/assumptions off` | Stops recording at once. From the next session the tool also moves behind ToolSearch, so the model stops seeing it. Remembered across sessions. |
+| `/assumptions on` | Turns recording back on at once. If the session started with the ledger off, the tool returns to the list from the next session. |
 
 ## What it costs
 
@@ -42,7 +42,7 @@ spends using the tool:
 | Every request | about 200 input tokens | The tool's name, description and schema in the tool list. The description never changes, so after the first request this is a prompt-cache read (about a tenth of the price). |
 | Each entry Claude records | about 40 to 80 output tokens, plus a 2-token result | One tool call. Claude often batches it with other tool calls in the same step; when it doesn't, the step after it re-reads the context from cache. |
 | A turn where nothing was worth noting | 0 extra | The tool's description tells the model to skip the obvious. |
-| `/assumptions off` and `on` | one cache rebuild each | Changing whether the tool is listed changes the tool list, which is part of the cached prefix. |
+| `/assumptions off` and `on` | 0 in the current session | The tool list is left as the session started it, because changing it mid-conversation rebuilds the prompt cache and invalidates the model's earlier thinking blocks. After `off`, the tool's roughly 200 cached tokens stay in the list until the session ends. |
 | **Do it** | one new turn | You are asking Claude to do more work, so that turn costs what the work costs. |
 
 The band and the session log cost nothing in tokens. `/assumptions` prints
@@ -63,11 +63,11 @@ that row on the next turn, as it does other command output, was not checked.
   in its question. That is cheaper and more honest
   than asking the fork to guess what was skipped.
 - **A mode selector or model router.** A mode switches the ledger off by
-  running `/assumptions off` through `$.command.run`: that stops recording,
-  moves the tool behind ToolSearch and remembers the choice. Writing
-  `{ plugin: 'assumption-ledger', key: 'isOff' }` through `state.set` alone
-  only stops recording: the tool stays in the list (its `tool.describe`
-  answer is cached until invalidated) and the choice is not remembered.
+  running `/assumptions off` through `$.command.run`: that stops recording
+  and remembers the choice, so the tool is behind ToolSearch from the next
+  session. Writing `{ plugin: 'assumption-ledger', key: 'isOff' }` through
+  `state.set` alone only stops recording for this session: the choice is not
+  remembered.
 - **A shared project board.** `/assumptions write` gives a file another Claude
   or a dashboard can read.
 

@@ -32,7 +32,7 @@ export const forkPrompt = (answer: string) =>
     '- needsApproval: things done or proposed that the user should have approved first (destructive commands, pushes, new dependencies, work outside the request).',
     '- next: at most 2 next steps, each written as a prompt the user could send as is.',
     '',
-    'Use empty arrays when there is nothing to say. Be specific and brief: each item under 20 words. Do not flatter.',
+    'Use empty arrays when there is nothing to say. Be specific. Each item is drawn on one line of a narrow band and is cut off at 240 characters, so give the point without preamble. Do not flatter.',
   ].join('\n')
 
 const SOLVED: readonly Solved[] = ['yes', 'partly', 'no']

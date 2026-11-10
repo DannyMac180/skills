@@ -22,13 +22,25 @@ The description is four sentences: when to call it (three kinds), that
 `considered-not-done` matters most, and "skip the obvious". Longer guidance,
 say examples, was rejected: it is paid on every request.
 
-## Off means deferred, not unregistered
+## Off means deferred from the next session, not unregistered
 
-There is no `$.tool.unregister` in 2.1.286. `/assumptions off` sets
-`isDeferred: true` and calls `$.ui.invalidate('tool.describe')`, so the tool
-leaves the list (one cache rebuild), and any call that still arrives gets
-"The ledger is off for this session. Carry on." without recording. The
-setting is kept in `$.store` so it survives sessions.
+There is no `$.tool.unregister` in 2.1.286. `/assumptions off` stops recording
+at once: any call that still arrives gets "The ledger is off for this
+session. Carry on." The setting is kept in `$.store` so it survives sessions.
+
+The tool list is not touched mid-session. `tool.describe` answers
+`isDeferred` from a value set once at `session.start`, so the tool moves
+behind ToolSearch (or back) only when the next session starts. An earlier
+version flipped `isDeferred` and called `$.ui.invalidate('tool.describe')`
+straight away, and priced that as one cache rebuild. Anthropic's Claude
+Fable 5.2 prompting guide says a change to the tools between requests also
+invalidates the thinking blocks after the changed point, so the flip was
+removed. The cost is about 200 cached tokens a request for the rest of a
+session in which the ledger was turned off.
+
+Not verified: whether `session.start` also runs when a stored conversation is
+resumed. If it does, resuming a conversation after changing the setting
+changes that conversation's tool list.
 
 ## The follow-up button submits a prompt
 
